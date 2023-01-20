@@ -45,7 +45,10 @@ for row in range(len(A)):
 # A.Y = B => Y = A^-1.B
 Y = np.linalg.inv(A).dot(B)
 
-print(Y)
+# print(Y)
+for i in Y:
+    print(i[0])
+
 
 y_axis = [0]
 for i in Y:
@@ -53,12 +56,17 @@ for i in Y:
 y_axis.append(math.exp(1))
 
 x_axis = []
-for i in range(1 * int(n) + 1):
-    x_axis.append(i / (1 * int(n)))
+for i in range(int(n) + 1):
+    x_axis.append(i / int(n))
 
-plt.plot(x_axis, y_axis)
+if n <= 20:
+    plt.plot(x_axis, y_axis, marker='o')
+else:
+    plt.plot(x_axis, y_axis, marker='_')
+
 plt.xlabel('x')
 plt.ylabel('y')
+plt.title(f'Equações de Diferenças, com {int(n)} subintervalos')
 plt.show()
 
         
